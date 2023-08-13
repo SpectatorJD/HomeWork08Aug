@@ -1,8 +1,7 @@
 package com.example.HomeWorkAug080823.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
@@ -13,6 +12,10 @@ public class Student {
     private long id;
     private String name;
     private int age;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "faculty_id")
+    private Faculty faculty;
     public Student(){
 
     }

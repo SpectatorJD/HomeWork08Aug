@@ -4,8 +4,11 @@ import com.example.HomeWorkAug080823.model.Student;
 import com.example.HomeWorkAug080823.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+
 @Service
 public class StudentServiceImpl implements StudentService{
+
 
     private final StudentRepository studentRepository;
 
@@ -19,6 +22,10 @@ public class StudentServiceImpl implements StudentService{
 
     public Student findStudent(long id){
         return studentRepository.findById(id).get();
+    }
+    @Override
+    public Collection<Student> getByAge(Integer min, Integer max){
+        return studentRepository.findByAgeBetween(min, max);
     }
 
     @Override

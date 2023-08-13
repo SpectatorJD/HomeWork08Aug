@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+
 @RestController
 @RequestMapping("/student")
 public class StudentController {
@@ -38,5 +40,9 @@ public class StudentController {
     public ResponseEntity<Student> deleteStudent(@PathVariable long id){
         studentService.deleteStudent(id);
         return ResponseEntity.ok().build();
+    }
+    @GetMapping(params = {"min", "max"})
+    public Collection<Student> getByAge (@RequestParam Integer min, @RequestParam Integer max){
+return studentService.getByAge(min, max);
     }
 }

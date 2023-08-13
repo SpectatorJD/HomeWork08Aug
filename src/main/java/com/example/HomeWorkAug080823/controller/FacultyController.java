@@ -2,6 +2,8 @@ package com.example.HomeWorkAug080823.controller;
 
 import com.example.HomeWorkAug080823.model.Faculty;
 import com.example.HomeWorkAug080823.service.FacultyService;
+import com.example.HomeWorkAug080823.service.FacultyServiceImpl;
+import org.hibernate.mapping.Collection;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,7 @@ public class FacultyController {
     public FacultyController(FacultyService facultyService) {
         this.facultyService = facultyService;
     }
+
     @GetMapping("{id}")
     public ResponseEntity<Faculty> getFacultyInfo(@PathVariable long id){
         Faculty faculty = facultyService.findFaculty(id);
