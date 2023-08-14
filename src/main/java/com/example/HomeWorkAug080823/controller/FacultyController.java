@@ -2,11 +2,11 @@ package com.example.HomeWorkAug080823.controller;
 
 import com.example.HomeWorkAug080823.model.Faculty;
 import com.example.HomeWorkAug080823.service.FacultyService;
-import com.example.HomeWorkAug080823.service.FacultyServiceImpl;
-import org.hibernate.mapping.Collection;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Collection;
 
 @RestController
 @RequestMapping("/faculty")
@@ -25,12 +25,16 @@ public class FacultyController {
         }
         return ResponseEntity.ok(faculty);
     }
+    @GetMapping(params = {"color"})
+    public Collection<Faculty> getFiltered(@RequestParam String color){
+        return facultyService.getFilterByColor(color);
+    }
     @PostMapping
-    public Faculty createFaculty (@RequestBody Faculty faculty){
+    public Faculty addFaculty (@RequestBody Faculty faculty){
         return facultyService.addFaculty(faculty);
     }
     @PutMapping("{id}")
-    public ResponseEntity<Faculty> editStudent(@RequestBody Faculty faculty, @PathVariable long id){
+    public ResponseEntity<Faculty> editStudent(@RequestBody Faculty faculty, @PathVariable Long id){
         Faculty foundFaculty = facultyService.editFaculty(id, faculty);
         if (foundFaculty == null){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -38,8 +42,9 @@ public class FacultyController {
         return ResponseEntity.ok(foundFaculty);
     }
     @DeleteMapping("{id}")
-    public ResponseEntity<Faculty> deleteFaculty(@PathVariable long id){
+    public ResponseEntity<Faculty> deleteFaculty(@PathVariable Long id){
         facultyService.deleteFaculty(id);
         return ResponseEntity.ok().build();
     }
+
 }

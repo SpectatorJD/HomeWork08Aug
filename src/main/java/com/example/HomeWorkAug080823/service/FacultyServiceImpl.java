@@ -1,5 +1,6 @@
 package com.example.HomeWorkAug080823.service;
 
+import com.example.HomeWorkAug080823.exception.FacultyNotFoundException;
 import com.example.HomeWorkAug080823.model.Faculty;
 import com.example.HomeWorkAug080823.repository.FacultyRepository;
 import org.springframework.stereotype.Service;
@@ -55,5 +56,23 @@ public class FacultyServiceImpl implements FacultyService {
     @Override
     public Collection<Faculty> getFilterByColor (String color){
         return facultyRepository.findAllByColor(color);
+    }
+    public Faculty getFilterByName (String name){
+        return facultyRepository.findByName(name);
+    }
+
+    @Override
+    public Faculty getFacultyById(Long id) {
+        return facultyRepository.findById(id).orElseThrow(() -> new FacultyNotFoundException("Faculty not found"));
+    }
+
+
+    @Override
+    public Faculty editFaculty(Long id, Faculty faculty){
+        Faculty existing = (Faculty) getFacultyById(id);
+        existing.setColor(faculty.getColor());
+        existing.setName(faculty.getName());
+        facultyRepository.save(faculty);
+        return existing;
     }
 }
