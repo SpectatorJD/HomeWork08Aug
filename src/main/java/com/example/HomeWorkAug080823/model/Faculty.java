@@ -1,10 +1,7 @@
 package com.example.HomeWorkAug080823.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 import java.util.Set;
@@ -12,7 +9,7 @@ import java.util.Set;
 @Entity
 public class Faculty {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String color;
     private String name;
