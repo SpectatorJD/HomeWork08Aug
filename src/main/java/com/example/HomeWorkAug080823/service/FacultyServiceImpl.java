@@ -2,6 +2,7 @@ package com.example.HomeWorkAug080823.service;
 
 import com.example.HomeWorkAug080823.exception.FacultyNotFoundException;
 import com.example.HomeWorkAug080823.model.Faculty;
+import com.example.HomeWorkAug080823.model.Student;
 import com.example.HomeWorkAug080823.repository.FacultyRepository;
 import org.springframework.stereotype.Service;
 
@@ -74,5 +75,10 @@ public class FacultyServiceImpl implements FacultyService {
         existing.setName(faculty.getName());
         facultyRepository.save(faculty);
         return existing;
+    }
+
+    @Override
+    public Collection<Student> findStudent(String name) {
+        return null;
     }
 }

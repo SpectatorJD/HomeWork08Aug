@@ -1,5 +1,6 @@
 package com.example.HomeWorkAug080823.service;
 
+import com.example.HomeWorkAug080823.model.Faculty;
 import com.example.HomeWorkAug080823.model.Student;
 import com.example.HomeWorkAug080823.repository.StudentRepository;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,11 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public void deleteStudent(long id) {
         studentRepository.deleteById(id);
+    }
+
+    @Override
+    public Collection<Faculty> findFaculty(String name) {
+        return null;
     }
 
 }

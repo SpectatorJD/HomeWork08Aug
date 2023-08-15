@@ -1,5 +1,6 @@
 package com.example.HomeWorkAug080823.service;
 
+import com.example.HomeWorkAug080823.model.Faculty;
 import com.example.HomeWorkAug080823.model.Student;
 
 import java.util.Collection;
@@ -13,4 +14,5 @@ public interface StudentService {
     Student editStudent (long id, Student student);
     void deleteStudent (long id);
 
+    Collection<Faculty> findFaculty(String name);
 }

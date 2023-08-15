@@ -1,5 +1,6 @@
 package com.example.HomeWorkAug080823.controller;
 
+import com.example.HomeWorkAug080823.model.Faculty;
 import com.example.HomeWorkAug080823.model.Student;
 import com.example.HomeWorkAug080823.service.StudentService;
 import org.springframework.http.HttpStatus;
@@ -44,5 +45,9 @@ public class StudentController {
     @GetMapping(params = {"min", "max"}, value = "/age")
     public Collection<Student> getByAge (@RequestParam Integer min, @RequestParam Integer max){
 return studentService.getByAge(min, max);
+    }
+    @GetMapping(value = "/facultyStudent")
+    public Collection<Faculty> getNameFacultyStudent (@RequestParam String name){
+        return studentService.findFaculty(name);
     }
 }
