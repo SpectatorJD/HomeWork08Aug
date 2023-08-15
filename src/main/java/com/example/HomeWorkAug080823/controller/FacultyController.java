@@ -25,8 +25,8 @@ public class FacultyController {
         }
         return ResponseEntity.ok(faculty);
     }
-    @GetMapping(params = {"color"})
-    public Collection<Faculty> getFiltered(@RequestParam String color){
+    @GetMapping(params = {"color"},value = "/color")
+    public Collection<Faculty> getFiltered(@RequestParam(required = false) String color){
         return facultyService.getFilterByColor(color);
     }
     @PostMapping
