@@ -16,11 +16,9 @@ import java.util.Set;
 @RequestMapping("/faculty")
 public class FacultyController {
     private final FacultyService facultyService;
-
     public FacultyController(FacultyService facultyService) {
         this.facultyService = facultyService;
     }
-
     @GetMapping("{id}")
     public ResponseEntity<Faculty> getFacultyInfo(@PathVariable long id){
         Faculty faculty = facultyService.findFaculty(id);
@@ -51,8 +49,8 @@ public class FacultyController {
         return ResponseEntity.ok().build();
     }
     @GetMapping(params = {"name"},value = "/studentFaculty")
-    public Set<Student> getNameStudentFaculty (@RequestParam String name){
-        return (Set<Student>) facultyService.findStudent(name);
+    public Collection<Student> getNameStudentFaculty (@RequestParam String name){
+        return facultyService.findStudent(name);
     }
 
 }
