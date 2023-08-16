@@ -46,7 +46,7 @@ public class StudentController {
     public Collection<Student> getByAge (@RequestParam Integer min, @RequestParam Integer max){
 return studentService.getByAge(min, max);
     }
-    @GetMapping(value = "/facultyStudent")
+    @GetMapping(params = {"name"},value = "/facultyStudent")
     public Collection<Faculty> getNameFacultyStudent (@RequestParam String name){
         return studentService.findFaculty(name);
     }

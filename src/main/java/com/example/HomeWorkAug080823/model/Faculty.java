@@ -3,6 +3,7 @@ package com.example.HomeWorkAug080823.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.Collection;
 import java.util.Objects;
 import java.util.Set;
 
@@ -13,17 +14,26 @@ public class Faculty {
     private long id;
     private String color;
     private String name;
-    public Faculty(){
 
-    }
     @JsonIgnore
     @OneToMany(mappedBy = "faculty")
     private Set<Student> students;
+    public Faculty(){
+
+    }
 
     public Faculty(long id, String color, String name) {
         this.id = id;
         this.color = color;
         this.name = name;
+    }
+
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
     }
 
     public long getId() {
@@ -50,13 +60,7 @@ public class Faculty {
         this.name = name;
     }
 
-    public Set<Student> getStudents() {
-        return students;
-    }
 
-    public void setStudents(Set<Student> students) {
-        this.students = students;
-    }
 
     @Override
     public boolean equals(Object o) {

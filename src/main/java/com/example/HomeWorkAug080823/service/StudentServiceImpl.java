@@ -41,7 +41,7 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public Collection<Faculty> findFaculty(String name) {
-        return null;
+        return (Collection<Faculty>) studentRepository.findStudent(name);
     }
 
 }

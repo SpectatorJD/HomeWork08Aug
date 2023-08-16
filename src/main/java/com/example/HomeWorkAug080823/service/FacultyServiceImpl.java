@@ -5,8 +5,10 @@ import com.example.HomeWorkAug080823.model.Faculty;
 import com.example.HomeWorkAug080823.model.Student;
 import com.example.HomeWorkAug080823.repository.FacultyRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Collection;
+import java.util.Set;
 
 @Service
 public class FacultyServiceImpl implements FacultyService {
@@ -78,7 +80,8 @@ public class FacultyServiceImpl implements FacultyService {
     }
 
     @Override
-    public Collection<Student> findStudent(String name) {
-        return null;
+    public Set<Student> findStudent(String name) {
+         return facultyRepository.findByName(name).getStudents();
     }
 }
+

@@ -50,9 +50,9 @@ public class FacultyController {
         facultyService.deleteFaculty(id);
         return ResponseEntity.ok().build();
     }
-    @GetMapping(value = "/studentFaculty")
-    public Collection<Student> getNameStudentFaculty (@RequestParam String name){
-        return facultyService.findStudent(name);
+    @GetMapping(params = {"name"},value = "/studentFaculty")
+    public Set<Student> getNameStudentFaculty (@RequestParam String name){
+        return (Set<Student>) facultyService.findStudent(name);
     }
 
 }
