@@ -1,5 +1,6 @@
 package com.example.HomeWorkAug080823.service;
 
+import com.example.HomeWorkAug080823.model.Faculty;
 import com.example.HomeWorkAug080823.model.Student;
 import com.example.HomeWorkAug080823.repository.StudentRepository;
 import org.springframework.stereotype.Service;
@@ -39,7 +40,7 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public Student findFaculty(String name) {
+    public Faculty findFaculty(String name) {
         return studentRepository.findByName(name);
     }
 
