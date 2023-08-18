@@ -39,9 +39,9 @@ public class StudentServiceImpl implements StudentService{
         studentRepository.deleteById(id);
     }
 
-    @Override
+
     public Faculty findFaculty(String name) {
-        return studentRepository.findByName(name);
+        return  studentRepository.findByName(name).getFaculty();
     }
 
 }

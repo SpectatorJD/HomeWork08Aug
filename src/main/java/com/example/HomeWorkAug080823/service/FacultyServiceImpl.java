@@ -7,6 +7,7 @@ import com.example.HomeWorkAug080823.repository.FacultyRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.Set;
 
 @Service
 public class FacultyServiceImpl implements FacultyService {
@@ -44,9 +45,9 @@ public class FacultyServiceImpl implements FacultyService {
     public Collection<Faculty> findAllByColor (String color){
         return facultyRepository.findAllByColor(color);
     }
-    public Collection<Faculty> findAllByNameContains (String part){
+   /* public Collection<Faculty> findAllByNameContains (String part){
         return facultyRepository.findAllByNameContains(part);
-    }
+    }*/
     public Collection<Faculty>getAllFaculty(){
         return facultyRepository.findAll();
     }
@@ -77,7 +78,6 @@ public class FacultyServiceImpl implements FacultyService {
         return existing;
     }
 
-    @Override
     public Collection<Student> findStudent(String name) {
         return facultyRepository.findByName(name).getStudents();
     }

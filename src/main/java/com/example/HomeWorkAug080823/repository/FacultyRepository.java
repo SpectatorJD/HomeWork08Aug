@@ -9,5 +9,5 @@ public interface FacultyRepository extends JpaRepository<Faculty, Long> {
     Faculty findByName (String name);
     Collection<Faculty> findAllByColor(String color);
 
-    Collection<Faculty> findAllByNameContains(String part);
+
 }
