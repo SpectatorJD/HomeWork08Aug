@@ -98,6 +98,5 @@ public class FacultyControllerTest {
                         .delete("/faculty/1")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
-
     }
 }
