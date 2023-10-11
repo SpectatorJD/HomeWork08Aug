@@ -16,22 +16,26 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class FacultyServiceImplTest {
-    private FacultyService facultyService;
-    private FacultyRepository facultyRepository;
 
-    @BeforeEach
-    public void setUp(){
+        private FacultyService facultyService;
+        private FacultyRepository facultyRepository;
+
+        @BeforeEach
+        public void setUp() {
         facultyRepository = Mockito.mock(FacultyRepository.class);
         facultyService = new FacultyServiceImpl(facultyRepository);
     }
-    @Test
-    public void shouldReturnFacultyWhenFacultyExists(){
-        when(facultyRepository.findById(1L)).thenReturn(Optional.of(new Faculty(1L,"New", "black")));
-        facultyService.findFaculty(1L);
-        verify(facultyRepository, times(1)).findById(1L);
+
+        @Test
+        public void addFacultyTest() {
+        assertEquals("name", "name");
+        Faculty faculty = new Faculty(1,"red","MTF");
+        when(facultyRepository.save(faculty)).thenReturn(faculty);
+        assertEquals(facultyService.addFaculty(faculty), faculty);
     }
 
 
